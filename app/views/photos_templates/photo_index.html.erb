@@ -1,0 +1,38 @@
+<h1>List of photos</h1>
+
+<%= @list_of_photos %>
+
+<table border="1">
+<tr>
+  <th>
+    Image
+  </th>
+   
+   <th>
+     Caption
+  </th>
+
+   <th>
+      Owner 
+  </th>
+
+   <th>
+      Posted
+  </th>
+  <th> </th>
+</tr>
+<% @list_of_photos.each do |fotografia| %>
+
+<tr>
+<td> <img src="<%= fotografia.image%>"> </td>
+<td> <%= fotografia.caption %> </td>
+<td> <%= fotografia.poster.username%> </td>
+<td> <%= fotografia.created_at%> </td>
+<td>
+ <a href="/photos/<%= fotografia.poster.username %>">
+ Show Details</td>
+
+
+</tr>
+<% end%>
+</table>
