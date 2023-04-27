@@ -1,0 +1,49 @@
+
+
+<h1> <%= @the_user.username%> </h1>
+
+<dl>
+  <dt>ID</dt>
+  <dd>42</dd>
+
+   <dt>Edit user</dt>
+  <dd>form goes here</dd>
+  </dl>
+
+
+<h2>Own photos (<%= @the_user.own_photos.count %>)</h2>
+<table border="1">
+<tr>
+  <th> Image </th>
+
+  <th> Owner </th>
+
+  <th> Caption </th>
+
+  <th> Posted </th>
+
+  <th> </th>
+</tr>
+
+<%  @the_user.own_photos.each do |foto|%>
+<tr>
+  <td>
+  <img src="<%= foto.image%>"> </td>
+
+  <td>
+   <%#= User.where({ :id => foto.owner_id}).at(0).username%>
+    
+    <%= foto.poster.username%>  </td>
+  <td> <%= foto.caption%> </td>
+
+  <td> <%= foto.created_at%> </td>
+
+  <td> Show details</td>
+</tr>
+<%end%>
+</table>
+
+
+
+
+</table>
