@@ -1,6 +1,6 @@
 <h1>List of photos</h1>
 
-<%= @list_of_photos %>
+<% @list_of_photos %>
 
 <table border="1">
 <tr>
@@ -29,7 +29,7 @@
 <td> <%= fotografia.poster.username%> </td>
 <td> <%= fotografia.created_at%> </td>
 <td>
- <a href="/photos/<%= fotografia.poster.username %>">
+ <a href="/photos/<%= fotografia.id %>">
  Show Details</td>
 
 

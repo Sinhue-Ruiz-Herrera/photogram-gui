@@ -10,10 +10,24 @@ class PhotosController < ApplicationController
   end
 
   def show
-    url_username = params.fetch("path_username")
-    matching_usernames = Photo.where({ :id => url_username })
+    photo_id = params.fetch("path_photo_id")
+    matching_photos = Photo.where({ :id => photo_id })
 
-    @the_user = matching_usernames.at(0)
+    @the_photo = matching_photos.at(0)
+
     render({ :template => "photos_templates/photos_details.html.erb" })
   end
+
+  def borrar
+    #Parameters: {"borrar_id => "635"}
+    the_id = params.fetch("borrar_id")
+    matching_photos = Photo.where({ :id => the_id})
+    the_photo = matching_photos.at(0)
+
+    the_photo.destroy
+
+
+    redirect_to("/photos")
+
+  end  
 end
