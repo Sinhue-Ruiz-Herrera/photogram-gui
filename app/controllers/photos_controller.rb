@@ -45,8 +45,42 @@ class PhotosController < ApplicationController
 
     a_new_photo.save
 
-    redirect_to("/photos/" + a_new_photo.id.to_s)
+    next_url = "/photos/" + a_new_photo.id.to_s
+    redirect_to(next_url)
 
       #render({ :template => "photos_templates/agregar.html.erb"} )
+    end
+
+    def editar
+
+      the_id = params.fetch("modify_id")
+
+      matching_photos = Photo.where({ :id => the_id})
+
+      the_photo = matching_photos.at(0)
+
+     
+
+      input_image = params.fetch("query_image")
+      input_caption = params.fetch("query_caption")
+      #input_owner_id = params.fetch("query_owner_id")
+
+      the_photo.image = input_image
+      the_photo.caption = input_caption
+      
+      the_photo.save
+
+
+      next_url = "/photos/" + the_photo.id.to_s
+
+      redirect_to(next_url)
+    end
+
+    def add_comment
+
+      
+      render({ :template => "photos_templates/add_comments.html.erb"} )
+
+
     end
 end
